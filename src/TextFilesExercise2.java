@@ -1,0 +1,2 @@
+public class TextFilesExercise2 {
+}
