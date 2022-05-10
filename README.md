@@ -29,4 +29,13 @@ Zapisz w pliku tekstowym 1000 liczb losowych (całkowitych).
 Skopiuj do dwóch plików liczby:
 Do pierwszego: Większe od średniej
 Do drugiego: Mniejsze od średniej
+
+Plik TextFileExercise2:
+Zadanie 2.
+Plik tekstowy zawiera dane domów w postaci:
+NazwaDomu-CenaDomu-LiczbaKondygnacji-Lokalizacja
+Np.
+Chata-10000.00-1-Wies
+Willa-999999.99-4-Miasto
+Skopiuj do drugiego pliku tekstowego, parterowe domy wiejskie, zmniejszając ich cenę o 10%
  
