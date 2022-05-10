@@ -12,7 +12,8 @@ public class TextFilesExercise2 {
             }
             catch (FileNotFoundException ex) {
                 System.err.println("File does not exist");
-            } catch (IOException e) {
+            } 
+            catch (IOException e) {
                 e.printStackTrace();
             }
         Scanner sc = new Scanner(fileRead);
