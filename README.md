@@ -38,4 +38,10 @@ Np.
 Chata-10000.00-1-Wies
 Willa-999999.99-4-Miasto
 Skopiuj do drugiego pliku tekstowego, parterowe domy wiejskie, zmniejszając ich cenę o 10%
+
+Zadanie 3.
+Wykonaj statystykę dziennikarską pliku tekstowego:
+
+    Oblicz liczbę słów
+    Oblicz średnią długość zdania (obliczamy stosunek liczby kropek do liczby znaków)
  
