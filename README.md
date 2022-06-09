@@ -45,3 +45,18 @@ Wykonaj statystykę dziennikarską pliku tekstowego:
     Oblicz liczbę słów
     Oblicz średnią długość zdania (obliczamy stosunek liczby kropek do liczby znaków)
  
+Zadanie 4. RandomAccessFile
+Pliki o swobodnym dostępie.
+Termin: 19 czerwca 2022 23:59
+Instrukcje
+Istnieje plik danych zawierający opisy domów zapisane jako kolejne czwórki:  
+String nazwaDomu
+int liczbaKondygnacji
+double cena
+String lokalizacja (zapisana jako "wies" "miasto")
+ 
+Napisz program, który obnizy w tym pliku ceny domów parterowych znajdujących się na wsi o 10%.
+ 
+Jako odpowiedź wgraj tylko powyższy program.
+ 
+Aby przetestowac działanie, można napisać program, który będzie zapisywał w pliku dane takich domów. Proponuję, aby też użyć klasy RandomAccesFile i napisać program w ten sposób, że będzie dopisywał jeden dom na końcu pliku. W ten sposób można zapisać tyle domów, ile się chce.
