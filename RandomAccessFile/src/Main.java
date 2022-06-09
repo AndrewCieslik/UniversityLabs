@@ -18,7 +18,7 @@ public class Main {
                 try {
                     raf.close();
                 } catch (IOException e) {
-                    System.err.println("Failed closing the file: " + e);
+                    System.err.println("Failed closing the file: " + e.getMessage());
                 }
             }
         }
