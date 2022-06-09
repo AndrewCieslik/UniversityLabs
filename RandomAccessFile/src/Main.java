@@ -1,20 +1,29 @@
+import java.io.EOFException;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.RandomAccessFile;
 
 public class Main {
-
     public static void czytajPLik() {
+        RandomAccessFile raf = null;
         try {
-            RandomAccessFile raf= new RandomAccessFile("Domy.dat", "r");
-            raf.seek(0);
-            byte[] bytes = new byte[(int) raf.length()];
-            raf.read(bytes);
-            System.out.println(new String(bytes));
-
+            raf = new RandomAccessFile("Domy.dat", "r");
+            while (raf.getFilePointer() < raf.length()) {
+                System.out.println("Name: " + raf.readUTF() + " levels: " + raf.readInt() + " price: " + raf.readDouble() + " location: " + raf.readUTF());
+            }
         } catch (IOException e) {
             System.err.println("Błąd odczytu pliku");
+        } finally {
+            if (raf != null) {
+                try {
+                    raf.close();
+                } catch (IOException e) {
+                    System.err.println("Failed closing the file: " + e);
+                }
+            }
         }
     }
+
     public static void zmienCene() {
         try {
             RandomAccessFile raf = new RandomAccessFile("Domy.dat", "rw");
@@ -48,12 +57,18 @@ public class Main {
     }
 
     public static void main (String[] args) {
+        System.out.println("=== Przed zmianą cen ===");
+        czytajPLik();
+        System.out.println("========================");
 
         Parcela parcelaMiasto = new Parcela("Chata", 2, 70000, "Miasto");
         parcelaMiasto.dopiszParcele();
         Parcela parcelaNaWsi = new Parcela("Chata", 1, 90000, "Wies");
         parcelaNaWsi.dopiszParcele();
         zmienCene();
+
+        System.out.println("=== Po zmianie cen ===");
         czytajPLik();
+        System.out.println("======================");
     }
 }
