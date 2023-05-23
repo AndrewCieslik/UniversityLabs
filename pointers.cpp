@@ -15,7 +15,7 @@ int str_len(char *s) {
 int lwr_str_cnt(char *s) {
     int lwr = 0;
     for (; *s != '\0'; s++) {
-        if (*s >= 97 && *s <= 122) {
+        if (*s >= 'a' && *s <= 'z') {
             lwr++;
         }
     }
@@ -25,7 +25,7 @@ int lwr_str_cnt(char *s) {
 int upr_str_cnt(char *s) {
     int upper = 0;
     for (; *s != '\0'; s++) {
-        if (*s >= 65 && *s <= 90) {
+        if (*s >= 'A' && *s <= 'Z') {
             upper++;
         }
     }
@@ -35,7 +35,7 @@ int upr_str_cnt(char *s) {
 int dgt_str_cnt(char *s) {
     int dgt = 0;
     for (; *s != '\0'; s++) {
-        if (*s >= 48 && *s <= 57) {
+        if (*s >= '0' && *s <= '9') {
             dgt++;
         }
     }
@@ -45,7 +45,7 @@ int dgt_str_cnt(char *s) {
 int nalpha_str_cnt(char *s) {
     int nalpha = 0;
     for (; *s != '\0'; s++) {
-        if (*s >= 48 && *s <= 57 || *s >= 65 && *s <= 90 || *s >= 97 && *s <= 122) {
+        if (*s >= 'A' && *s <= 'Z' || *s >= 'a' && *s <= 'z' || *s >= '0' && *s <= '9') {
             nalpha++;
         }
     }
@@ -127,11 +127,12 @@ char *str_rev(char *s) {
   Rezultat:
     Liczba slow w napisie s
 */
+bool is_word_letter(char c) {
+    return c >= 'a' && c <= 'z' || c >= 'A' && c <= 'Z' || c >= '0' && c <= '9' || c == '_';
+}
 
 int str_word_count(char *s) {
-    if (*s == '\0') {
-        return 0;
-    }
+
     int word_counter = 0;
     bool found_new_word;
     for (; *s != '\0'; s++) {
@@ -139,7 +140,7 @@ int str_word_count(char *s) {
             s++;
             continue;
         }
-        if (*s >= 48 && *s <= 57 || *s >= 65 && *s <= 90 || *s >= 97 && *s <= 122 || *s == '_') {
+        if (is_word_letter(*s)) {
             found_new_word = true;
         } else {
             found_new_word = false;
