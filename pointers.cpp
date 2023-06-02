@@ -4,55 +4,67 @@
 using namespace std;
 const int MAX_LEN = 128;
 
-int str_len(char *s) {
+int str_len(const char *s) {
+/*  int str_length = 0;
+        for (; *s != '\0'; ++s) {
+            str_length++;
+        }
+    return str_length;
+    }
+*/
     int str_length = 0;
-    for (; *s != '\0'; ++s) {
+    while (*s) {
+        *s++;
         str_length++;
     }
     return str_length;
 }
 
-int lwr_str_cnt(char *s) {
+int lwr_str_cnt(const char *s) {
     int lwr = 0;
-    for (; *s != '\0'; s++) {
+    while (*s != '\0') {
         if (*s >= 'a' && *s <= 'z') {
             lwr++;
         }
+        *s++;
     }
     return lwr;
 }
 
-int upr_str_cnt(char *s) {
+int upr_str_cnt(const char *s) {
     int upper = 0;
-    for (; *s != '\0'; s++) {
+    while (*s != '\0') {
         if (*s >= 'A' && *s <= 'Z') {
             upper++;
         }
+        *s++;
     }
     return upper;
 }
 
-int dgt_str_cnt(char *s) {
+int dgt_str_cnt(const char *s) {
     int dgt = 0;
-    for (; *s != '\0'; s++) {
+    while (*s != '\0') {
         if (*s >= '0' && *s <= '9') {
             dgt++;
         }
+        *s++;
     }
     return dgt;
 }
 
-int nalpha_str_cnt(char *s) {
+int nalpha_str_cnt(const char *s) {
     int nalpha = 0;
-    for (; *s != '\0'; s++) {
+    while (*s != '\0') {
         if (*s >= 'A' && *s <= 'Z' || *s >= 'a' && *s <= 'z' || *s >= '0' && *s <= '9') {
             nalpha++;
         }
+        *s++;
     }
     return nalpha;
 }
 
-int chr_str_cnt(char c, char *s) {
+int chr_str_cnt(char c, const char *s) {
     int char_counter = 0;
     for (; *s != '\0'; s++) {
         if (*s == c) {
@@ -63,16 +75,13 @@ int chr_str_cnt(char c, char *s) {
 }
 
 char *chr_str_pos(char c, char *s) {
-    int i = -1;
-    char *result = NULL;
-    for (; *s != '\0'; s++) {
+    while (*s != '\0') {
         if (*s == c) {
-            result = s;
-            return result;
+            return s;
         }
-        i++;
+        *s++;
     }
-    return NULL;
+    return 0;
 }
 
 char *chr_str_rpos(char c, char *s) {
@@ -82,7 +91,7 @@ char *chr_str_rpos(char c, char *s) {
             result = s;
         }
     }
-    return (result == NULL) ? NULL : result;
+    return result;
 }
 
 char *str_rev(char *s) {
@@ -109,24 +118,6 @@ char *str_rev(char *s) {
     return s;
 }
 
-/*
-  int str_word_count(char * s)
-
-  Funkcja wyznacza liczbe slow w tablicy s. Jako slowo
-  rozumiemy ciag liter cyfr i znakow podkreslenia. Slowa
-  moga być rozdzielane jednym lub wieloma znakami spacji, tabulacji,
-  podzialu wiersza.
-
-  Przyklad:
-  Napis: "Ala _ma_    kot_ta i    dwa psy"
-  Liczba slow: 6
-
-  Parametry:
-    char * s -- tablica zawierajaca napis
-
-  Rezultat:
-    Liczba slow w napisie s
-*/
 bool is_word_letter(char c) {
     return c >= 'a' && c <= 'z' || c >= 'A' && c <= 'Z' || c >= '0' && c <= '9' || c == '_';
 }
@@ -175,12 +166,12 @@ int main() {
     cout << "\nLiczba wystapien znaku " << c << ": " << chr_str_cnt(c, line);
 
     if ((pos = chr_str_pos(c, line)) != 0)
-        cout << "\nPierwsze wystapienie znaku " << *pos << " na pozycji: " << pos - line;
+        cout << "\nPierwsze wystapienie znaku " << *pos << " na pozycji: " << pos - line + 1;
     else
         cout << "\nZnak " << c << " nie zostal znaleziony";
 
     if ((pos = chr_str_rpos(c, line)) != 0)
-        cout << "\nOstatnie wystapienie znaku " << *pos << " na pozycji: " << pos - line;
+        cout << "\nOstatnie wystapienie znaku " << *pos << " na pozycji: " << pos - line + 1;
     else
         cout << "\nZnak " << c << " nie zostal znaleziony";
 
